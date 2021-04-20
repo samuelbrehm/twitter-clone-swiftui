@@ -9,7 +9,22 @@ import SwiftUI
 
 struct FeedView: View {
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottomTrailing) {
+            ScrollView {
+                
+            }
+            
+            Button(action: {}, label: {
+                Image("tweet")
+                    .resizable()
+                    .renderingMode(.template)
+                    .frame(width: 32, height: 32)
+                    .padding()
+            })
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .clipShape(Circle())
+            .padding()
             
         }
     }
