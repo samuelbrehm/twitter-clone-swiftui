@@ -21,7 +21,9 @@ struct FeedView: View {
                 .padding()
             }
             
-            Button(action: {}, label: {
+            Button(action: {
+                isShowingTweetView.toggle()
+            }, label: {
                 Image("tweet")
                     .resizable()
                     .renderingMode(.template)
@@ -32,8 +34,8 @@ struct FeedView: View {
             .foregroundColor(.white)
             .clipShape(Circle())
             .padding()
-            .sheet(isPresented: $isShowingTweetView) {
-            
+            .fullScreenCover(isPresented: $isShowingTweetView) {
+                NewTweetView(isPresented: $isShowingTweetView)
             }
             
         }
