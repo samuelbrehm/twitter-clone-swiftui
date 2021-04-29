@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             TabView {
-                    FeedView()
+                FeedView()
                     .tabItem {
                         Image(systemName: "house")
                         Text("Home")
@@ -22,7 +22,7 @@ struct ContentView: View {
                         Image(systemName: "magnifyingglass")
                         Text("Search")
                     }
-                Text("Message")
+                ConversationsView()
                     .tabItem {
                         Image(systemName: "envelope")
                         Text("Message")
