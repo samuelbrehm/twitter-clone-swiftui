@@ -13,15 +13,47 @@ struct RegistrationView: View {
     @State var fullname = ""
     @State var username = ""
     
+    @State var showImagePicker: Bool = false
+    @State var selectedUIImage: UIImage?
+    @State var image: Image?
+    
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
+    func loadImage() {
+        guard let selectedImage = selectedUIImage else { return }
+        image = Image(uiImage: selectedImage)
+    }
+    
     var body: some View {
         ZStack {
             VStack {
-                Image("twitter-logo")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 220, height: 100)
-                    .padding(.top, 99)
-                    .padding(.bottom, 32)
+                Button(action: {
+                    showImagePicker.toggle()
+                }, label: {
+                    ZStack {
+                        if let image = image {
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 140, height: 140)
+                                .clipShape(Circle())
+                                .padding(.top, 88)
+                                .padding(.bottom, 16)
+                        } else {
+                            Image("plus_photo")
+                                .resizable()
+                                .renderingMode(.template)
+                                .scaledToFill()
+                                .frame(width: 140, height: 140)
+                                .padding(.top, 88)
+                                .padding(.bottom, 16)
+                                .foregroundColor(.white)
+                        }
+                    }
+                })
+                .sheet(isPresented: $showImagePicker, onDismiss: loadImage, content: {
+                    ImagePicker(image: $selectedUIImage)
+                })
                 
                 VStack(spacing: 20) {
                     CustomTextField(text: $email, placeholder: Text("Email"), imageName: "envelope")
@@ -62,15 +94,20 @@ struct RegistrationView: View {
                 
                 Spacer()
                 
-                HStack {
-                    Text("Already have an account?")
-                        .font(.system(size: 14))
-                    
-                    Text("Sign In")
-                        .font(.system(size: 14, weight: .semibold))
-                }
-                .foregroundColor(.white)
-                .padding(.bottom, 40)
+                Button(action: {
+                    mode.wrappedValue.dismiss()
+                }, label: {
+                    HStack {
+                        Text("Already have an account?")
+                            .font(.system(size: 14))
+                        
+                        Text("Sign In")
+                            .font(.system(size: 14, weight: .semibold))
+                    }
+                    .foregroundColor(.white)
+                    .padding(.bottom, 40)
+                })
+               
             }
         }
         .background(Color(#colorLiteral(red: 0.1141251102, green: 0.6306205392, blue: 0.9539138675, alpha: 1)))
