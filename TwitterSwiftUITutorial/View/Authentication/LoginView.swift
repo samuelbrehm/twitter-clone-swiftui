@@ -11,6 +11,8 @@ struct LoginView: View {
     @State var email = ""
     @State var password = ""
     
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -28,6 +30,8 @@ struct LoginView: View {
                             .background(Color(.init(white: 1, alpha: 0.15)))
                             .cornerRadius(10)
                             .foregroundColor(.white)
+                            .keyboardType(.emailAddress)
+                            .autocapitalization(.none)
                         
                         CustomSecureField(text: $password, placeholder: Text("Password"))
                             .padding()
@@ -40,7 +44,9 @@ struct LoginView: View {
                     HStack {
                         Spacer()
                         
-                        Button(action: {}, label: {
+                        Button(action: {
+                            
+                        }, label: {
                             Text("Forgot Password?")
                                 .font(.footnote)
                                 .bold()
@@ -50,7 +56,9 @@ struct LoginView: View {
                         })
                     }
                     
-                    Button(action: {}, label: {
+                    Button(action: {
+                        viewModel.login(withEmail: email, password: password)
+                    }, label: {
                         Text("Sign In")
                             .font(.headline)
                             .foregroundColor(.blue)

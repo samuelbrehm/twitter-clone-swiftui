@@ -19,6 +19,8 @@ struct RegistrationView: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     func loadImage() {
         guard let selectedImage = selectedUIImage else { return }
         image = Image(uiImage: selectedImage)
@@ -61,28 +63,38 @@ struct RegistrationView: View {
                         .background(Color(.init(white: 1, alpha: 0.15)))
                         .cornerRadius(10)
                         .foregroundColor(.white)
+                        .keyboardType(.emailAddress)
+                        .autocapitalization(.none)
                     
                     CustomTextField(text: $fullname, placeholder: Text("Full Name"), imageName: "person")
                         .padding()
                         .background(Color(.init(white: 1, alpha: 0.15)))
                         .cornerRadius(10)
                         .foregroundColor(.white)
+                        .keyboardType(.alphabet)
+                        .autocapitalization(.words)
                     
                     CustomTextField(text: $username, placeholder: Text("Username"), imageName: "person")
                         .padding()
                         .background(Color(.init(white: 1, alpha: 0.15)))
                         .cornerRadius(10)
                         .foregroundColor(.white)
+                        .autocapitalization(.none)
                     
                     CustomSecureField(text: $password, placeholder: Text("Password"))
                         .padding()
                         .background(Color(.init(white: 1, alpha: 0.15)))
                         .cornerRadius(10)
                         .foregroundColor(.white)
+                        .autocapitalization(.none)
+                        
                 }
                 .padding(.horizontal, 32)
                 
-                Button(action: {}, label: {
+                Button(action: {
+                    guard let image = selectedUIImage else { return }
+                    viewModel.registerUser(email: email, password: password, username: username, fullname: fullname, profileImage: image)
+                }, label: {
                     Text("Sign Up")
                         .font(.headline)
                         .foregroundColor(.blue)
