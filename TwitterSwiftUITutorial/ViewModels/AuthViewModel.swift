@@ -42,8 +42,6 @@ class AuthViewModel: ObservableObject {
                 return
             }
             
-            print("DEBUG: Succefully uploaded user photo...")
-            
             storageRef.downloadURL { url, _ in
                 guard let profileImageUrl = url?.absoluteString else { return }
                 
@@ -82,7 +80,6 @@ class AuthViewModel: ObservableObject {
         Firestore.firestore().collection("users").document(uid).getDocument { snapshot, _ in
             guard let data = snapshot?.data() else { return }
             let user = User(dictionary: data)
-            print("DEBUG: username is \(user.username)")
             print("DEBUG: User is \(user)")
         }
     }
