@@ -20,8 +20,6 @@ class SearchViewModel: ObservableObject {
             guard let documents = snapshot?.documents else { return }
             
             self.users = documents.map({ User(dictionary: $0.data()) })
-            
-//            print("DEBUG: Users \(self.users)")
         }
     }
 }
