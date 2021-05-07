@@ -16,11 +16,11 @@ struct SearchView: View {
             SearchBar(text: $searchText)
 
             VStack(alignment: .leading) {
-                ForEach(viewModel.users) { user in
+                ForEach(searchText.isEmpty ? viewModel.users : viewModel.filterusers(searchText)) { user in
                     HStack { Spacer() }
                     
                     NavigationLink(
-                        destination: UserProfileView(user: user),
+                        destination: LazyView(UserProfileView(user: user)),
                         label: {
                             UserCell(user: user)
                         })

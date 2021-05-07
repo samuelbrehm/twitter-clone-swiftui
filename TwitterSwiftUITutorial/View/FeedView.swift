@@ -11,9 +11,9 @@ struct FeedView: View {
     @State var isShowingTweetView = false
     @ObservedObject var viewModel = FeedViewModel()
     
-//    init() {
-//        self.viewModel.fetchTweets()
-//    }
+    //    init() {
+    //        self.viewModel.fetchTweets()
+    //    }
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -27,9 +27,9 @@ struct FeedView: View {
                 }
                 .padding()
             }
-            .onAppear {
-                self.viewModel.fetchTweets()
-            }
+//            .onReceive(self.viewModel.$tweets) { _ in
+//                self.viewModel.fetchTweets()
+//            }
             
             Button(action: {
                 isShowingTweetView.toggle()
@@ -44,11 +44,11 @@ struct FeedView: View {
             .foregroundColor(.white)
             .clipShape(Circle())
             .padding()
-//            .fullScreenCover(isPresented: $isShowingTweetView, onDismiss: {
-//                viewModel.fetchTweets()
-//            }, content: {
-//                NewTweetView(isPresented: $isShowingTweetView)
-//            })
+            //            .fullScreenCover(isPresented: $isShowingTweetView, onDismiss: {
+            //                viewModel.fetchTweets()
+            //            }, content: {
+            //                NewTweetView(isPresented: $isShowingTweetView)
+            //            })
             .fullScreenCover(isPresented: $isShowingTweetView) {
                 NewTweetView(isPresented: $isShowingTweetView)
             }
