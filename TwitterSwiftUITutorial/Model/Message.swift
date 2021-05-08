@@ -5,7 +5,30 @@
 //  Created by Samuel Brehm on 28/04/21.
 //
 
-import Foundation
+import Firebase
+
+struct Message: Identifiable {
+    let user: User
+    let text: String
+    let toId: String
+    let fromId: String
+    let isFromCurrentUser: Bool
+    let timestamp: Timestamp
+    let id: String
+    
+    var chatPatternId: String { return isFromCurrentUser ? toId : fromId }
+    
+    init(user: User, dictionary: [String: Any]) {
+        self.user = user
+        
+        self.text = dictionary["text"] as? String ?? ""
+        self.toId = dictionary["toId"] as? String ?? ""
+        self.fromId = dictionary["fromId"] as? String ?? ""
+        self.isFromCurrentUser = fromId == Auth.auth().currentUser?.uid
+        self.timestamp = dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())
+        self.id = dictionary["id"] as? String ?? ""
+    }
+}
 
 struct MockMessage: Identifiable {
     let id: Int
