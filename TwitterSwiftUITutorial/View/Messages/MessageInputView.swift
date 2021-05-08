@@ -13,14 +13,24 @@ struct MessageInputView: View {
     var action: () -> Void
     
     var body: some View {
-        HStack {
-            TextField("Message...", text: $messageText)
-                .textFieldStyle(PlainTextFieldStyle())
-                .frame(minHeight: 30)
+        VStack {
+            Rectangle()
+                .foregroundColor(Color(.separator))
+                .frame(width: UIScreen.main.bounds.width, height: 0.75)
+                .padding(.bottom, 8)
             
-            Button(action: action) {
-                Text("Send")
+            HStack {
+                TextField("Message...", text: $messageText)
+                    .textFieldStyle(PlainTextFieldStyle())
+                    .frame(minHeight: 30)
+                
+                Button(action: action) {
+                    Text("Send")
+                        .bold()
+                        .foregroundColor(.blue)
+                }
             }
+            .padding(.horizontal)
         }
     }
 }

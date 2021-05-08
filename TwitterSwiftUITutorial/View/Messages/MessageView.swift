@@ -20,7 +20,9 @@ struct MessageView: View {
                     .background(Color.blue)
                     .clipShape(ChatBubble(isFromCurrentUser: true))
                     .foregroundColor(.white)
-                //                                    .padding(.horizontal)
+                    .padding(.horizontal)
+                    .padding(.leading, 100)
+                    .padding(.trailing, 16)
             } else {
                 HStack(alignment: .bottom) {
                     KFImage(URL(string: message.user.profileImageUrl))
@@ -35,12 +37,13 @@ struct MessageView: View {
                         .clipShape(ChatBubble(isFromCurrentUser: false))
                         .foregroundColor(.black)
                     
-                    Spacer()
                 }
+                .padding(.horizontal)
+                .padding(.trailing, 100)
+                .padding(.leading, 16)
+                Spacer()
             }
-            
         }
-        .padding(.horizontal)
     }
 }
 

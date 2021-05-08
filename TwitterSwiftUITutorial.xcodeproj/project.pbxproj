@@ -135,12 +135,24 @@
 			path = Messages;
 			sourceTree = "<group>";
 		};
+		6232E74A2646E23A00D1677B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				62FE24B8262E173100C55206 /* ContentView.swift */,
+				62FE24CB262E5E6600C55206 /* FeedView.swift */,
+				62CB869B262F561800B33DAB /* SearchBar.swift */,
+				62CB8698262F54A900B33DAB /* SearchView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		62522905263AE49B0001E6A0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				6252290C263AE6500001E6A0 /* FilterButtonView.swift */,
 				6252290A263AE6300001E6A0 /* ProfileActionButtonView.swift */,
 				62522908263AE6120001E6A0 /* ProfileHeaderView.swift */,
+				62CB869E262F6E2D00B33DAB /* UserCell.swift */,
 				62522906263AE4FF0001E6A0 /* UserProfileView.swift */,
 			);
 			path = Profile;
@@ -149,6 +161,7 @@
 		6252290E263B1CE90001E6A0 /* Tweets */ = {
 			isa = PBXGroup;
 			children = (
+				62CB8695262F459F00B33DAB /* TweetCell.swift */,
 				6252290F263B1D0A0001E6A0 /* NewTweetView.swift */,
 				6250CC1426441465004F6F72 /* TweetActionsView.swift */,
 				6250CC1226440209004F6F72 /* TweetDetailView.swift */,
@@ -168,11 +181,11 @@
 		62522912263B25F80001E6A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				62522913263B26110001E6A0 /* TextArea.swift */,
-				6252291A263B32100001E6A0 /* CustomTextField.swift */,
 				6252291C263B45AB0001E6A0 /* CustomSecureField.swift */,
+				6252291A263B32100001E6A0 /* CustomTextField.swift */,
 				62B63EEC263C2D3300455341 /* ImagePicker.swift */,
 				6250CC1826446C4F004F6F72 /* LazyView.swift */,
+				62522913263B26110001E6A0 /* TextArea.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -205,12 +218,12 @@
 		62FE24B5262E173100C55206 /* TwitterSwiftUITutorial */ = {
 			isa = PBXGroup;
 			children = (
-				62FE24BA262E173200C55206 /* Assets.xcassets */,
 				62B63EEE263C506800455341 /* GoogleService-Info.plist */,
 				62FE24BF262E173200C55206 /* Info.plist */,
+				62FE24B6262E173100C55206 /* TwitterSwiftUITutorialApp.swift */,
+				62FE24BA262E173200C55206 /* Assets.xcassets */,
 				62FE24CA262E5DB500C55206 /* Model */,
 				62FE24BC262E173200C55206 /* Preview Content */,
-				62FE24B6262E173100C55206 /* TwitterSwiftUITutorialApp.swift */,
 				62522911263B25F00001E6A0 /* Utils */,
 				62FE24C8262E5D9400C55206 /* View */,
 				62FE24C9262E5DAB00C55206 /* ViewModels */,
@@ -229,16 +242,11 @@
 		62FE24C8262E5D9400C55206 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6232E74A2646E23A00D1677B /* Main */,
 				62522915263B2E5A0001E6A0 /* Authentication */,
-				62FE24B8262E173100C55206 /* ContentView.swift */,
-				62FE24CB262E5E6600C55206 /* FeedView.swift */,
 				62191B0E2639CD4200A5F541 /* Messages */,
 				62522905263AE49B0001E6A0 /* Profile */,
-				62CB869B262F561800B33DAB /* SearchBar.swift */,
-				62CB8698262F54A900B33DAB /* SearchView.swift */,
-				62CB8695262F459F00B33DAB /* TweetCell.swift */,
 				6252290E263B1CE90001E6A0 /* Tweets */,
-				62CB869E262F6E2D00B33DAB /* UserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -262,8 +270,8 @@
 			isa = PBXGroup;
 			children = (
 				62191B192639F52A00A5F541 /* Message.swift */,
-				62982F35264060B00005A667 /* User.swift */,
 				625B966E264338F400BD3976 /* Tweet.swift */,
+				62982F35264060B00005A667 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
